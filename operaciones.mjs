@@ -1,16 +1,17 @@
 import fs from 'fs'
 
-
-const registrar = (Nombre, Edad, Raza, Color, Enfermedad) => {
+//Funciion para registrar
+const registrar = (Nombre, Edad, Raza, Color, Enfermedad) => { 
+    //Cambié los nombres de las variables porque eran muy feos
     try {
         const data = fs.readFileSync('citas.json', 'utf8')
         const citas = JSON.parse(data)
-
+        //Verificando si falta un campo
         if(!Nombre || !Edad || !Raza || !Color|| !Enfermedad){
             console.log('Por favor introduzca todos los datos!')
             return
         }
-
+        // Declarando un nuevo registro
         const new_cita = {
             Nombre,
             Edad,
@@ -18,6 +19,7 @@ const registrar = (Nombre, Edad, Raza, Color, Enfermedad) => {
             Color,
             Enfermedad
         }
+        //Agregando el registro
         citas.push(new_cita)
         fs.writeFileSync('citas.json', JSON.stringify(citas))
         console.log(`Se ha resgistrado de forma correcta la cita para ${Nombre}`)
@@ -27,6 +29,7 @@ const registrar = (Nombre, Edad, Raza, Color, Enfermedad) => {
     }
 }
 
+//Función para leer
 const leer = () => {
     try {
         const data = JSON.parse(fs.readFileSync('citas.json', 'utf8'))
