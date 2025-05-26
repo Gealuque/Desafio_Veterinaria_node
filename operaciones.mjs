@@ -39,5 +39,5 @@ const leer = () => {
     }
 }
 
-
+//Exportación de funciones
 export {registrar, leer} 
